@@ -24,6 +24,8 @@ Key Features:
 3)Blood Donation and Blood Bank Management: Facilitate blood donation and provide real-time updates on blood bank inventories to save lives during emergencies.
 
 Why MedTech?
+
+
 1)Provides transparency in healthcare services for underserved areas.
 
 
