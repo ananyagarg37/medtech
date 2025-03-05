@@ -2,7 +2,11 @@
 
 MedTech is a community-focused healthcare solution aimed at addressing the essential needs of hospitals in rural and semi-urban areas. Our project provides real-time information on hospital resources, including:
 1) Availability of hospital beds
+
+
 2)Doctor availability schedules
+
+
 3)Blood donation and blood bank services
 
 By bridging the gap between healthcare providers and rural communities, MedTech ensures access to timely and critical medical support.
