@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedMax Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#106EBE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background:white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">MedMax Signup</h2>
+        <form>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter your phone number" minlength="10" maxlength="10" required>
+            </div>
+            <div class="input-group">
+                <label>Date of Birth</label>
+                <input type="date" required>
+            </div>
+            <div class="input-group">
+                <label>Gender</label>
+                <select>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Role</label>
+                <select>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="checkbox" required> I agree to the Terms & Conditions
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
