@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedMax - Patient Input</title>
+  <link rel="stylesheet" href="md1.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>MedMax</h2>
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Add Patient</a>
+        <a href="#">Appointments</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header>
+        <h1>Add Patient Info</h1>
+        <div class="user-info">Welcome, Admin</div>
+      </header>
+
+      <form class="user-form" id="patientForm">
+        <label>
+          Full Name:
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Age:
+          <input type="number" name="age" required min="0" />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Gender:
+          <select name="gender" required>
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          Blood Group:
+          <select name="bloodGroup" required>
+            <option value="">Select</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+        </label>
+
+        <label>
+          Disease:
+          <input type="text" name="disease" required />
+        </label>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
