@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedTech Signup</title>
+  <link rel="stylesheet" href="med.css" />
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="background"></div>
+
+  <!-- Signup Form -->
+  <div class="signup-container">
+    <h2>Join <span>MedTech</span></h2>
+    <form id="signupForm">
+      <input type="text" id="fullname" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      
+      <select id="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <button type="submit">Sign Up</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script src="med.js"></script>
+</body>
+</html>
