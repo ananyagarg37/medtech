@@ -1515,60 +1515,128 @@
             }
         }
 
-        // Form Submission
-        function submitDonationForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const amount = document.getElementById('amount').value;
+   function submitDonationForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const amount = document.getElementById('amount').value.trim();
 
-            if (name && email && phone && amount) {
-                alert(`Thank you, ${name}! Your donation of ${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('registerModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    // Validation checks
+    if (!name || !email || !phone || !amount) {
+        showError("Please fill all required fields.");
+        return;
+    }
 
-        function submitBloodForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('bloodName').value;
-            const email = document.getElementById('bloodEmail').value;
-            const phone = document.getElementById('bloodPhone').value;
-            const bloodGroup = document.getElementById('bloodGroup').value;
-            const date = document.getElementById('bloodDate').value;
-            const hospital = document.getElementById('bloodHospital').value;
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
 
-            if (name && email && phone && bloodGroup && date && hospital) {
-                alert(`Thank you, ${name}! Your blood donation registration for ${bloodGroup} at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('bloodModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
 
-        function submitBedForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('bedName').value;
-            const email = document.getElementById('bedEmail').value;
-            const phone = document.getElementById('bedPhone').value;
-            const bedType = document.getElementById('bedType').value;
-            const quantity = document.getElementById('bedQuantity').value;
-            const hospital = document.getElementById('bedHospital').value;
+    if (isNaN(amount) || amount <= 0) {
+        showError("Donation amount must be a positive number.");
+        return;
+    }
 
-            if (name && email && phone && bedType && quantity && hospital) {
-                alert(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('bedModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    // Success case
+    alert(`Thank you, ${name}! Your donation of ₹${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('registerModal');
+}
 
-        // Open Donation Modal
-        document.querySelector('.donate-now-btn').addEventListener('click', () => {
-            openModal('register');
-        });
+function submitBloodForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('bloodName').value.trim();
+    const email = document.getElementById('bloodEmail').value.trim();
+    const phone = document.getElementById('bloodPhone').value.trim();
+    const bloodGroup = document.getElementById('bloodGroup').value;
+    const date = document.getElementById('bloodDate').value;
+    const hospital = document.getElementById('bloodHospital').value.trim();
+
+    // Validation checks
+    if (!name || !email || !phone || !bloodGroup || !date || !hospital) {
+        showError("Please fill all required fields.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
+
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    if (date < today) {
+        showError("Donation date cannot be in the past.");
+        return;
+    }
+
+    // Success case
+    alert(`Thank you, ${name}! Your blood donation (${bloodGroup}) at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('bloodModal');
+}
+
+function submitBedForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('bedName').value.trim();
+    const email = document.getElementById('bedEmail').value.trim();
+    const phone = document.getElementById('bedPhone').value.trim();
+    const bedType = document.getElementById('bedType').value;
+    const quantity = document.getElementById('bedQuantity').value.trim();
+    const hospital = document.getElementById('bedHospital').value.trim();
+
+    // Validation checks
+    if (!name || !email || !phone || !bedType || !quantity || !hospital) {
+        showError("Please fill all required fields.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
+
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
+
+    if (isNaN(quantity) || quantity <= 0) {
+        showError("Bed quantity must be a positive number.");
+        return;
+    }
+
+    // Success case
+    alert(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('bedModal');
+}
+
+// Helper Functions
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function isValidPhone(phone) {
+    return /^\d{10}$/.test(phone);
+}
+
+function showError(message) {
+    alert(message); // Replace with a better error display (e.g., a <div class="error-message">)
+}
+
+// Open Donation Modal
+document.querySelector('.donate-now-btn').addEventListener('click', () => {
+    openModal('register');
+});
     </script>
 </body>
 </html>
