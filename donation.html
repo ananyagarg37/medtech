@@ -1283,7 +1283,7 @@
             <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
             <h3>Bed Donation Registration</h3>
             <form id="bedForm" onsubmit="submitBedForm(event)">
-                <label for="bedName">Full Name</label>
+                <label for="bedName">Name</label>
                 <input type="text" id="bedName" required>
                 
                 <label for="bedEmail">Email</label>
@@ -1298,6 +1298,7 @@
                     <option value="Standard">Standard Hospital Bed</option>
                     <option value="ICU">ICU Bed</option>
                     <option value="Pediatric">Pediatric Bed</option>
+                     <option value="Pediatric">operational Bed</option>
                 </select>
                 
                 <label for="bedQuantity">Quantity</label>
@@ -1306,9 +1307,9 @@
                 <label for="bedHospital">Target Hospital</label>
                 <select id="bedHospital" required>
                     <option value="">Select Hospital</option>
-                    <option value="Ascension Providence Southfield">Ascension Providence Southfield</option>
-                    <option value="Ascension Providence Novi">Ascension Providence Novi</option>
-                    <option value="Corewell Health Royal Oak">Corewell Health Royal Oak</option>
+                    <option value="Ascension Providence Southfield">ABC Hospital</option>
+                    <option value="Ascension Providence Novi">AIIMS Delhi</option>
+                    <option value="Corewell Health Royal Oak">Corewell Health </option>
                 </select>
                 
                 <button type="submit">Submit</button>
