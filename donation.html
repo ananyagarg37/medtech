@@ -992,6 +992,45 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
+        .custom-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s;
+}
+
+.custom-popup.success {
+    background-color: #4CAF50;
+}
+
+.custom-popup.error {
+    background-color: #f44336;
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+}
+
+.popup-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
 
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -1080,35 +1119,40 @@
             }
         }
     </style>
-</head>
+ </head>
 <body>
-    <!-- Header -->
+   <header>
+    <div class="container header-container">
+        <div class="logo">
+            <div class="logo-text">
+                <span>MEDMAX</span>
     <header>
         <div class="container header-container">
             <div class="logo-text">
                     <span>MEDMAX</span>
-                </div>
-            </div>
-
-            <nav>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li class="active"><a href="#"> Donation</a></li>
-                    <li><a href="policies.html">Policies</a></li>
-                    <li><a href="hospitals.html">Hospitals</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="contact-donate">
-                <div class="phone">
-                    <i>📞</i>
-                    <span>Call 248-278-8484</span>
-                </div>
-                <a href="#services" class="donate-btn">Donate</a>
+          </div>
             </div>
         </div>
-    </header>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li class="active"><a href="#">Donation</a></li>
+                <li><a href="policies.html">Policies</a></li>
+                <li><a href="hospitals.html">Hospitals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-donate">
+            <div class="phone">
+                <i>📞</i>
+                <span>Call 248-278-8484</span>
+            </div>
+            <a href="#services" class="donate-btn">Donate</a>
+        </div>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1330,21 +1374,21 @@
                         <p class="testimonial-text">Thanks to MedMax, my blood donation helped a patient in critical condition. It feels incredible to make a difference!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Rahul Sharma</span>
+                            <span class="author-name">Samrath</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">The bed donated through MedMax gave my mother comfort during her recovery. Thank you for your support!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Ravi Verma</span>
+                            <span class="author-name">Raghav Sharma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">MedMax’s blood donation drive saved my father’s life. I’m forever grateful for this initiative.</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Riya Sharma</span>
+                            <span class="author-name">Ram Krishna sharma</span>
                         </div>
                     </div>
                 </div>
@@ -1382,7 +1426,7 @@
                         <div class="location-icon">🏥</div>
                         <h3 class="location-name">Beamount Hospital</h3>
                         <p class="location-description">
-                            Book a bed or join our blood donation drives. Contact us at 248-278-8484 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
+                            Book a bed or join our blood donation drives. Contact us at 122-123-444 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
                         </p>
                     </div>
                 </div>
@@ -1419,7 +1463,7 @@
             </div>
             <div class="footer-section footer-contact">
                 <h3>Contact</h3>
-                <p><i class="fas fa-phone"></i> 248-278-8484</p>
+                <p><i class="fas fa-phone"></i>123-123-444</p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:info@medmax.org">info@medmax.org</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Detroit, MI</p>
             </div>
@@ -1433,7 +1477,7 @@
             <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
             <h3>Donor Registration</h3>
             <form id="donationForm" onsubmit="submitDonationForm(event)">
-                <label for="name">Full Name</label>
+                <label for="name"> Name</label>
                 <input type="text" id="name" required>
                 
                 <label for="email">Email</label>
@@ -1515,60 +1559,148 @@
             }
         }
 
-        // Form Submission
-        function submitDonationForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const amount = document.getElementById('amount').value;
+function submitDonationForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const amount = document.getElementById('amount').value.trim();
 
-            if (name && email && phone && amount) {
-                alert(`Thank you, ${name}! Your donation of ${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('registerModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    // Validation checks
+    if (!name || !email || !phone || !amount) {
+        showError("Please fill all required fields.");
+        return;
+    }
 
-        function submitBloodForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('bloodName').value;
-            const email = document.getElementById('bloodEmail').value;
-            const phone = document.getElementById('bloodPhone').value;
-            const bloodGroup = document.getElementById('bloodGroup').value;
-            const date = document.getElementById('bloodDate').value;
-            const hospital = document.getElementById('bloodHospital').value;
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
 
-            if (name && email && phone && bloodGroup && date && hospital) {
-                alert(`Thank you, ${name}! Your blood donation registration for ${bloodGroup} at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('bloodModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
 
-        function submitBedForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('bedName').value;
-            const email = document.getElementById('bedEmail').value;
-            const phone = document.getElementById('bedPhone').value;
-            const bedType = document.getElementById('bedType').value;
-            const quantity = document.getElementById('bedQuantity').value;
-            const hospital = document.getElementById('bedHospital').value;
+    if (isNaN(amount) || amount <= 0) {
+        showError("Donation amount must be a positive number.");
+        return;
+    }
 
-            if (name && email && phone && bedType && quantity && hospital) {
-                alert(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
-                closeModal('bedModal');
-            } else {
-                alert('Please fill all fields.');
-            }
-        }
+    // Success case
+    showSuccess(`Thank you, ${name}! Your donation of ₹${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('registerModal');
+}
 
-        // Open Donation Modal
-        document.querySelector('.donate-now-btn').addEventListener('click', () => {
-            openModal('register');
-        });
+function submitBloodForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('bloodName').value.trim();
+    const email = document.getElementById('bloodEmail').value.trim();
+    const phone = document.getElementById('bloodPhone').value.trim();
+    const bloodGroup = document.getElementById('bloodGroup').value;
+    const date = document.getElementById('bloodDate').value;
+    const hospital = document.getElementById('bloodHospital').value.trim();
+
+    // Validation checks
+    if (!name || !email || !phone || !bloodGroup || !date || !hospital) {
+        showError("Please fill all required fields.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
+
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    if (date < today) {
+        showError("Donation date cannot be in the past.");
+        return;
+    }
+
+    // Success case
+    showSuccess(`Thank you, ${name}! Your blood donation (${bloodGroup}) at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('bloodModal');
+}
+
+function submitBedForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('bedName').value.trim();
+    const email = document.getElementById('bedEmail').value.trim();
+    const phone = document.getElementById('bedPhone').value.trim();
+    const bedType = document.getElementById('bedType').value;
+    const quantity = document.getElementById('bedQuantity').value.trim();
+    const hospital = document.getElementById('bedHospital').value.trim();
+
+    // Validation checks
+    if (!name || !email || !phone || !bedType || !quantity || !hospital) {
+        showError("Please fill all required fields.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
+
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
+
+    if (isNaN(quantity) || quantity <= 0) {
+        showError("Bed quantity must be a positive number.");
+        return;
+    }
+
+    // Success case
+    showSuccess(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('bedModal');
+}
+
+// Helper Functions
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function isValidPhone(phone) {
+    return /^\d{10}$/.test(phone);
+}
+
+function showError(message) {
+    // Create error popup
+    const popup = document.createElement('div');
+    popup.className = 'custom-popup error';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="popup-icon">✕</span>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 5000);
+}
+
+function showSuccess(message) {
+    // Create success popup with green tick
+    const popup = document.createElement('div');
+    popup.className = 'custom-popup success';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="popup-icon">✓</span>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 5000);
+}
+
     </script>
 </body>
 </html>
