@@ -34,103 +34,147 @@
             line-height: 1.6;
             color: var(--dark-color);
             background-color: #f5f5f5;
-            padding-top: 80px;
+            padding-top: 0;
             min-height: 100vh;
         }
 
-        /* Header Styles */
-        .main-header {
-            position: fixed;
+        /* New Header Styles */
+        header {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
             z-index: 1000;
-            background-color: var(--primary-color);
-            padding: 10px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            margin-top: 0;
         }
 
-        .top-header .container {
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            transition: transform 0.3s ease;
         }
 
-        .main-nav ul {
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text span:last-child {
+            font-weight: bold;
+            color: #0e4d7a;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .main-nav ul li {
-            margin-right: 30px;
-        }
-
-        .main-nav ul li a {
-            color: var(--light-color);
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 14px;
-            padding: 5px 0;
+        nav ul li {
+            margin-left: 35px;
             position: relative;
-            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .main-nav ul li a:after {
+        nav ul li:hover {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #62c5e8;
+        }
+
+        nav ul li.active::after {
+            content: '•';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #62c5e8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .contact-donate {
+            display: flex;
+            align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone:hover {
+            opacity: 0.7;
+        }
+
+        .donate-btn {
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-btn::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            background-color: var(--light-color);
-            bottom: -2px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.4s ease;
+        }
+
+        .donate-btn:hover::after {
+            width: 200%;
             left: 0;
-            transition: all 0.3s ease;
         }
 
-        .main-nav ul li a:hover:after,
-        .main-nav ul li a.active:after {
-            width: 100%;
-        }
-
-        .location {
-            color: var(--light-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .location i {
-            margin-right: 10px;
-        }
-
-        .nav-bar {
-            padding: 10px;
-        }
-
-        .account-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 25px;
-            color: var(--light-color);
-        }
-
-        .account-button:hover {
-            color: var(--light-gray);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--light-color);
-            margin-bottom: 5px;
-            transition: all 0.3s ease;
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
         }
 
         /* Content Styles */
@@ -275,38 +319,174 @@
                 display: flex;
             }
         }
+
+        /* Add new styles for doctors preview section */
+        .doctors-preview-section {
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+
+        .doctors-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .doctor-preview-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .doctor-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .doctor-preview-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+            padding: 3px;
+        }
+
+        .doctor-preview-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .doctor-preview-card p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .view-profile {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .view-profile:hover {
+            background: #0e4d7a;
+        }
+
+        .view-all-doctors {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-view-all {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-all:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+        }
     </style>
 </head>
 <body>
-    <!-- Main Header -->
-    <header class="main-header">
-        <div class="top-header">
-            <div class="container">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="hospitals.html" class="active">HOSPITAL</a></li>
-                        <li><a href="doctor.html">DOCTORS</a></li>
-                        <li><a href="features.html">FEATURES</a></li>
-                        <li><a href="about.html">ABOUT</a></li>
-                        <li><a href="profile.html">ACCOUNT</a></li>
-                    </ul>
-                </nav>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>PUNJAB , INDIA </span>
+    <!-- New Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <span>MEDMAX</span>
                 </div>
-                <div class="nav-bar">
-                    <button class="account-button">
-                        <i class="fas fa-user-circle"></i>
-                    </button>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="doctor.html">Doctors</a></li>
+                    <li class="active"><a href="#">Donation</a></li>
+                    <li><a href="policies.html">Policies</a></li>
+                    <li><a href="hospitals.html">Hospitals</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-donate">
+                <div class="phone">
+                    <i>📞</i>
+                    <span>Call 248-278-8484</span>
                 </div>
+                <a href="#services" class="donate-btn">Donate</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Doctors Section -->
+        <div class="doctors-preview-section">
+            <div class="section-header">
+                <h2>Our Top Doctors</h2>
+                <p>Meet our experienced medical professionals</p>
+            </div>
+            <div class="doctors-preview-grid">
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Dr. Rajendar Kumar">
+                    <h3>Dr. Rajendar Kumar</h3>
+                    <p>Anesthesiology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Ramesh Malhotra">
+                    <h3>Dr. Ramesh Malhotra</h3>
+                    <p>Cardiology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr. Mahesh Kumar">
+                    <h3>Dr. Mahesh Kumar</h3>
+                    <p>Neurology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+            </div>
+            <div class="view-all-doctors">
+                <a href="doctor.html" class="btn-view-all">View All Doctors</a>
+            </div>
+        </div>
+
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="hospital-count">
