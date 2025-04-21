@@ -1,0 +1,127 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background with #2c3e50 Overlay */
+.background {
+  background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)),
+              url("https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg") no-repeat center center/cover;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* Authentication Container */
+.auth-container {
+  width: 90%;
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #ffffffee;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #2c3e50;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  width: 48%;
+  padding: 12px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #2c3e50;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.toggle-buttons button:hover {
+  background-color: #1a252f;
+}
+
+/* Form Container */
+.form-container {
+  display: block;
+}
+
+/* Signup and Signin Forms */
+.signup-container h2,
+.signin-container h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 28px;
+}
+
+.signup-container span,
+.signin-container span {
+  color: #2c3e50;
+}
+
+/* Inputs & Button */
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid #2c3e50;
+  font-size: 15px;
+  outline: none;
+  background-color: #f0f4f8;
+  color: #2c3e50;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 5px rgba(44, 62, 80, 0.4);
+}
+
+/* Button */
+form button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #1a252f;
+}
+
+/* Message Text */
+#signupMessage,
+#signinMessage {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #c0392b;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .auth-container {
+    margin: 50px 20px;
+  }
+
+  .toggle-buttons button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
