@@ -381,30 +381,6 @@
                     available_beds: 25,
                     total_beds: 60,
                     doctors: sampleDoctors.slice(0, 2)
-                }
-                // ... existing code ...
-        function displaySampleHospitals() {
-            const sampleHospitals = [
-                {
-                    name: "City General Hospital",
-                    location: "123 Main Street, Punjab",
-                    available_beds: 45,
-                    total_beds: 100,
-                    doctors: sampleDoctors.slice(0, 3)
-                },
-                {
-                    name: "Medicare Hospital",
-                    location: "456 Park Avenue, Punjab",
-                    available_beds: 30,
-                    total_beds: 80,
-                    doctors: sampleDoctors.slice(1, 4)
-                },
-                {
-                    name: "Life Care Hospital",
-                    location: "789 Health Road, Punjab",
-                    available_beds: 25,
-                    total_beds: 60,
-                    doctors: sampleDoctors.slice(0, 2)
                 },
                 {
                     name: "Apollo Medical Center",
@@ -452,8 +428,6 @@
             displayHospitals(sampleHospitals);
             updateStats(sampleHospitals);
         }
-
-          
 
         function displayHospitals(hospitals) {
             const hospitalsList = document.getElementById('hospitalsList');
