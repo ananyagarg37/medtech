@@ -382,10 +382,78 @@
                     total_beds: 60,
                     doctors: sampleDoctors.slice(0, 2)
                 }
+                // ... existing code ...
+        function displaySampleHospitals() {
+            const sampleHospitals = [
+                {
+                    name: "City General Hospital",
+                    location: "123 Main Street, Punjab",
+                    available_beds: 45,
+                    total_beds: 100,
+                    doctors: sampleDoctors.slice(0, 3)
+                },
+                {
+                    name: "Medicare Hospital",
+                    location: "456 Park Avenue, Punjab",
+                    available_beds: 30,
+                    total_beds: 80,
+                    doctors: sampleDoctors.slice(1, 4)
+                },
+                {
+                    name: "Life Care Hospital",
+                    location: "789 Health Road, Punjab",
+                    available_beds: 25,
+                    total_beds: 60,
+                    doctors: sampleDoctors.slice(0, 2)
+                },
+                {
+                    name: "Apollo Medical Center",
+                    location: "321 Medical Park, Chandigarh",
+                    available_beds: 75,
+                    total_beds: 150,
+                    doctors: sampleDoctors.slice(0, 4)
+                },
+                {
+                    name: "Fortis Healthcare",
+                    location: "567 Health Boulevard, Amritsar",
+                    available_beds: 60,
+                    total_beds: 120,
+                    doctors: sampleDoctors.slice(1, 3)
+                },
+                {
+                    name: "Max Super Speciality Hospital",
+                    location: "890 Wellness Street, Ludhiana",
+                    available_beds: 40,
+                    total_beds: 90,
+                    doctors: sampleDoctors.slice(2, 4)
+                },
+                {
+                    name: "Columbia Asia Hospital",
+                    location: "432 Medical Lane, Jalandhar",
+                    available_beds: 55,
+                    total_beds: 110,
+                    doctors: sampleDoctors.slice(0, 3)
+                },
+                {
+                    name: "Narayana Health City",
+                    location: "765 Healthcare Avenue, Patiala",
+                    available_beds: 35,
+                    total_beds: 70,
+                    doctors: sampleDoctors.slice(1, 4)
+                },
+                {
+                    name: "Manipal Hospital",
+                    location: "234 Health Circle, Mohali",
+                    available_beds: 50,
+                    total_beds: 100,
+                    doctors: sampleDoctors.slice(0, 2)
+                }
             ];
             displayHospitals(sampleHospitals);
             updateStats(sampleHospitals);
         }
+
+          
 
         function displayHospitals(hospitals) {
             const hospitalsList = document.getElementById('hospitalsList');
