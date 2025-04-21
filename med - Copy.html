@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedTech Auth</title>
+  <link rel="stylesheet" href="med.css" />
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="background"></div>
+
+  <!-- Authentication Container -->
+  <div class="auth-container">
+    
+    <!-- Signup Form -->
+    <div id="signupContainer" class="form-container">
+      <h2>Join <span>MedTech</span></h2>
+      <form id="signupForm">
+        <input type="text" id="fullname" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+        
+        <select id="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <p id="signupMessage"></p>
+      </form>
+    </div>
+
+    <!-- Signin Form -->
+    <div id="signinContainer" class="form-container" style="display: none;">
+      <h2>Welcome Back to <span>MedTech</span></h2>
+      <form id="signinForm">
+        <input type="email" id="signinEmail" placeholder="Email" required />
+        <input type="password" id="signinPassword" placeholder="Password" required />
+        
+        <p id="signinMessage"></p>
+      </form>
+    </div>
+
+    <!-- Toggle Buttons -->
+    <div class="toggle-buttons">
+      <button id="showSignup">Sign Up</button>
+      <button id="showSignin">Sign In</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle between Sign Up and Sign In forms
+    document.getElementById('showSignup').addEventListener('click', () => {
+      document.getElementById('signupContainer').style.display = 'block';
+      document.getElementById('signinContainer').style.display = 'none';
+    });
+
+    document.getElementById('showSignin').addEventListener('click', () => {
+      document.getElementById('signupContainer').style.display = 'none';
+      document.getElementById('signinContainer').style.display = 'block';
+    });
+
+    // Sign Up Form Validation
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const gender = document.getElementById('gender').value;
+      const message = document.getElementById('signupMessage');
+
+      // Form validation
+      if (!fullname || !email || !password || !confirmPassword || !gender) {
+        message.style.color = "red";
+        message.textContent = "Please fill in all fields!";
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        message.style.color = "red";
+        message.textContent = "Passwords do not match!";
+        return;
+      }
+
+      message.style.color = "green";
+      message.textContent = "Signup successful!";
+      
+      // Clear the form after successful submission
+      document.getElementById('signupForm').reset();
+    });
+
+    // Sign In Form Validation
+    document.getElementById('signinForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('signinEmail').value;
+      const password = document.getElementById('signinPassword').value;
+      const message = document.getElementById('signinMessage');
+
+      // Form validation
+      if (!email || !password) {
+        message.style.color = "red";
+        message.textContent = "Please fill in all fields!";
+        return;
+      }
+
+      message.style.color = "green";
+      message.textContent = "Signin successful!";
+      
+      // Clear the form after successful submission
+      document.getElementById('signinForm').reset();
+    });
+  </script>
+
+  <script src="med.js"></script>
+</body>
+</html>
+
+
+
+
