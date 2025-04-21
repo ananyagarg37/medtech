@@ -73,7 +73,8 @@ form button:hover {
 }
 
 /* Message Text */
-#message {
+#signupMessage,
+#signinMessage {
   margin-top: 10px;
   font-size: 14px;
   color: #c0392b;
@@ -81,8 +82,13 @@ form button:hover {
 
 /* Responsive */
 @media screen and (max-width: 480px) {
-  .signup-container {
+  .auth-container {
     margin: 50px 20px;
+  }
+
+  .toggle-buttons button {
+    width: 100%;
+    margin: 5px 0;
   }
 }
 
