@@ -4,7 +4,134 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MedMax - Patient Input</title>
-  <link rel="stylesheet" href="md1.css" />
+  <style>
+    :root {
+      --mint: #a0f0f5;
+      --mint-dark: #5dd3da;
+      --mint-light: #e3fbfd;
+      --text: #1a1a1a;
+      --background: #f2fcfd;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    .dashboard-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      background-color: var(--mint-dark);
+      color: white;
+      width: 240px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 2rem;
+    }
+
+    .sidebar nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 0;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .sidebar nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .user-form {
+      background-color: var(--mint-light);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-form label {
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .user-form input,
+    .user-form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .user-form button {
+      margin-top: 1rem;
+      background-color: var(--mint-dark);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .user-form button:hover {
+      background-color: #44c2ca;
+    }
+
+    #patientDataContainer {
+      margin-top: 2rem;
+      max-width: 600px;
+    }
+
+    .patient-card {
+      background-color: white;
+      border-left: 5px solid var(--mint-dark);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .patient-card h3 {
+      margin-top: 0;
+      color: var(--mint-dark);
+    }
+
+    .patient-card p {
+      margin: 0.3rem 0;
+    }
+    #box{
+      display: flex;
+      gap: 80px;
+    }
+    #box>div{
+      width: 500px;
+    }
+  </style>
 </head>
 <body>
   <div class="dashboard-container">
@@ -18,12 +145,13 @@
       </nav>
     </aside>
 
-    <main class="main-content">
+    <main class="main-content" >
       <header>
         <h1>Add Patient Info</h1>
         <div class="user-info">Welcome, Admin</div>
       </header>
-
+      <div id="box">
+        <div >
       <form class="user-form" id="patientForm">
         <label>
           Full Name:
@@ -72,9 +200,45 @@
 
         <button type="submit">Submit</button>
       </form>
+    </div>
+      <div  id="patientDataContainer"></div>
+    </div>
     </main>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('patientForm');
+      const outputContainer = document.getElementById('patientDataContainer');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent actual form submission
+
+        const formData = new FormData(form);
+        const patientData = {
+          name: formData.get('name'),
+          age: formData.get('age'),
+          email: formData.get('email'),
+          gender: formData.get('gender'),
+          bloodGroup: formData.get('bloodGroup'),
+          disease: formData.get('disease'),
+        };
+
+        const patientCard = document.createElement('div');
+        patientCard.className = 'patient-card';
+        patientCard.innerHTML = `
+          <h3>${patientData.name}</h3>
+          <p><strong>Age:</strong> ${patientData.age}</p>
+          <p><strong>Email:</strong> ${patientData.email}</p>
+          <p><strong>Gender:</strong> ${patientData.gender}</p>
+          <p><strong>Blood Group:</strong> ${patientData.bloodGroup}</p>
+          <p><strong>Disease:</strong> ${patientData.disease}</p>
+        `;
+
+        outputContainer.appendChild(patientCard);
+        form.reset();
+      });
+    });
+  </script>
 </body>
 </html>
