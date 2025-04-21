@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #15678a;
+            --secondary-color: #000000;
+            --light-color: #fbfbfa;
+            --dark-color: #000000;
+            --gray-color: #9cafbe;
+            --blue-color: #6b9ec1;
+            --brown-color: #7199b7;
+            --light-gray: #c5cdd0;
+            --accent-color: #86655e;
+            --beige-color: #cec0af;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav ul li {
+            margin-right: 30px;
+        }
+
+        .main-nav ul li a {
+            color: var(--light-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+            padding: 5px 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .main-nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-color);
+            bottom: -2px;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav ul li a:hover:after,
+        .main-nav ul li a.active:after {
+            width: 100%;
+        }
+
+        .location {
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .location i {
+            margin-right: 10px;
+        }
+
+        .nav-bar {
+            padding: 10px;
+        }
+
+        .account-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 25px;
+            color: var(--light-color);
+        }
+
+        .account-button:hover {
+            color: var(--light-gray);
+        }
+
+        /* Content Styles */
+        .content-wrapper {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .doctor-count {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Doctor Card Styles */
+        .doctor-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .doctor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--primary-color);
+            padding: 3px;
+        }
+
+        .doctor-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .doctor-specialty {
+            color: var(--gray-color);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .doctor-schedule {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .rating .star {
+            color: #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="top-header">
+            <div class="container">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="doctor.html" class="active">DOCTORS</a></li>
+                        <li><a href="hospitals.html">HOSPITALS</a></li>
+                        <li><a href="features.html">FEATURES</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="profile.html">ACCOUNT</a></li>
+                    </ul>
+                </nav>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>PUNJAB , INDIA </span>
+                </div>
+                <div class="nav-bar">
+                    <button class="account-button">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="doctor-count">
+                    Available Doctors <span id="totalDoctors">22</span>
+                </div>
+            </div>
+
+            <div class="row" id="doctorsList">
+                <!-- Doctor cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample doctor data
+        const doctors = [
+            {
+                name: 'Dr. Rajendar Kumar',
+                specialty: 'Anesthesiology',
+                schedule: '10:00 am to 1:00 pm',
+                rating: 4.5,
+                image: 'https://randomuser.me/api/portraits/men/36.jpg'
+            },
+            {
+                name: 'Dr. Ramesh Malhotra',
+                specialty: 'Cardiology',
+                schedule: '2:00 pm to 5:00 pm',
+                rating: 4.7,
+                image: 'https://randomuser.me/api/portraits/men/32.jpg'
+            },
+            {
+                name: 'Dr. Mahesh Kumar',
+                specialty: 'Neurology',
+                schedule: '11:00 am to 3:00 pm',
+                rating: 4.8,
+                image: 'https://randomuser.me/api/portraits/men/45.jpg'
+            },
+            {
+                name: 'Dr. Suresh Lamba',
+                specialty: 'Oncology',
+                schedule: '9:00 am to 12:00 pm',
+                rating: 4.6,
+                image: 'https://randomuser.me/api/portraits/men/41.jpg'
+            }
+        ];
+
+        function displayDoctors() {
+            const doctorsList = document.getElementById('doctorsList');
+            const doctorsHTML = doctors.map(doctor => `
+                <div class="col-md-4 mb-4">
+                    <div class="doctor-card">
+                        <img src="${doctor.image}" alt="${doctor.name}" class="doctor-image">
+                        <h5 class="doctor-name">${doctor.name}</h5>
+                        <div class="doctor-specialty">
+                            <i class="fas fa-stethoscope me-2"></i>${doctor.specialty}
+                        </div>
+                        <div class="doctor-schedule">
+                            <i class="far fa-clock me-2"></i>${doctor.schedule}
+                        </div>
+                        <div class="rating">
+                            ${doctor.rating} <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            doctorsList.innerHTML = doctorsHTML;
+            document.getElementById('totalDoctors').textContent = doctors.length;
+        }
+
+        // Load doctors when the page loads
+        document.addEventListener('DOMContentLoaded', displayDoctors);
+
+        // Add more doctors for demonstration
+        for (let i = 0; i < 8; i++) {
+            doctors.push({...doctors[0]});
+        }
+    </script>
+</body>
+</html> 
