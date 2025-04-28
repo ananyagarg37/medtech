@@ -1,3 +1,151 @@
+header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text span:last-child {
+            font-weight: bold;
+            color: #0e4d7a;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #15678a;
+        }
+
+        nav ul li.active::after {
+            content: '•';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #62c5e8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .contact-donate {
+            display: flex;
+            align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone:hover {
+            opacity: 0.7;
+        }
+
+        .donate-btn {
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.4s ease;
+        }
+
+        .donate-btn:hover::after {
+            width: 200%;
+            left: 0;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+        }
+        :root {
+  --mint: #a0f0f5;
+  --mint-dark: #5dd3da;
+  --mint-light: #e3fbfd;
+  --text: #1a1a1a;
+  --background: #e6f7ff; /* Replaced with light blue */
+}
 * {
     margin: 0;
     padding: 0;
