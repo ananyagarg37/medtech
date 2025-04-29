@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
+<head><!DOCTYPE html>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedMax</title>
@@ -1119,40 +1119,38 @@
             }
         }
     </style>
- </head>
+</head>
 <body>
-   <header>
-    <div class="container header-container">
-        <div class="logo">
-            <div class="logo-text">
-                <span>MEDMAX</span>
+    <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo-text">
+            <div class="logo">
+                
+                <div class="logo-text">
+                    <span></span>
                     <span>MEDMAX</span>
-          </div>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li class="active"><a href="#"> Donation</a></li>
+                    <li><a href="#">Policies</a></li>
+                    <li><a href="#">Hospitals</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-donate">
+                <div class="phone">
+                    <i>📞</i>
+                    <span>Call 248-278-8484</span>
+                </div>
+                <a href="#services" class="donate-btn">Donate</a>
             </div>
         </div>
-
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="#">Donation</a></li>
-                <li><a href="policies.html">Policies</a></li>
-                <li><a href="hospitals.html">Hospitals</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="contact-donate">
-            <div class="phone">
-                <i>📞</i>
-                <span>Call 248-278-8484</span>
-            </div>
-            <a href="#services" class="donate-btn">Donate</a>
-        </div>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1165,7 +1163,7 @@
                 </h1>
                 <h2 class="hero-subtitle">Saving Lives Through Blood and Bed Donations</h2>
                 <p class="hero-description">
-                    At MedMax, we provide critical support to hospitals by facilitating blood and bed donations. Your contribution can save lives by ensuring patients have access to vital resources.
+                    At MedMax, we provide critical support to hospitals by facilitating blood and bed donations. Your contribution can save lives by ensuring patients have access to vital resources. Join us in making a difference today.
                 </p>
             </div>
             <img src="woman-removebg-preview.png" alt="Woman holding linens" class="hero-image">
@@ -1213,7 +1211,7 @@
                         <div class="checkbox" onclick="toggleCheckbox(this)"></div>
                         <div class="amount">₹10000</div>
                     </div>
-                    <p class="donation-purpose">Fund a  blood donation campaigns.</p>
+                    <p class="donation-purpose">Fund a week of blood donation campaigns.</p>
                 </div>
                 <div class="donation-option">
                     <div class="donation-option-header">
@@ -1248,7 +1246,7 @@
                     <div class="service-text">
                         <h3 class="service-title">Blood Donation</h3>
                         <p class="service-description">
-                            One drop of blood can save millions of lives
+                            One drop of blood can save millions of lives. Register to donate blood and help patients in critical need.
                         </p>
                         <div class="service-buttons">
                             <a href="#" class="service-btn service-donate" onclick="openModal('blood')">REGISTER NOW</a>
@@ -1275,27 +1273,20 @@
     </section>
 
     <!-- Blood Donation Modal -->
-   <div id="bloodModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('bloodModal')">&times;</span>
-        <h2 class="modal-title">Blood Donation Registration</h2>
-        <form id="bloodForm" onsubmit="submitBloodForm(event)">
-            <div class="form-group">
+    <div id="bloodModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('bloodModal')">&times;</span>
+            <h3>Blood Donation Registration</h3>
+            <form id="bloodForm" onsubmit="submitBloodForm(event)">
                 <label for="bloodName">Full Name</label>
                 <input type="text" id="bloodName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="bloodEmail">Email Address</label>
+                
+                <label for="bloodEmail">Email</label>
                 <input type="email" id="bloodEmail" required>
-            </div>
-
-            <div class="form-group">
-                <label for="bloodPhone">Phone Number</label>
+                
+                <label for="bloodPhone">Phone</label>
                 <input type="tel" id="bloodPhone" required>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bloodGroup">Blood Group</label>
                 <select id="bloodGroup" required>
                     <option value="">Select Blood Group</option>
@@ -1308,14 +1299,10 @@
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
                 </select>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bloodDate">Preferred Donation Date</label>
                 <input type="date" id="bloodDate" required>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bloodHospital">Preferred Hospital</label>
                 <select id="bloodHospital" required>
                     <option value="">Select Hospital</option>
@@ -1323,65 +1310,50 @@
                     <option value="Ascension Providence Novi">Ascension Providence Novi</option>
                     <option value="Corewell Health Royal Oak">Corewell Health Royal Oak</option>
                 </select>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
-
 
     <!-- Bed Donation Modal -->
-   <div id="bedModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
-        <h2 class="modal-title">Bed Donation Registration</h2>
-        <form id="bedForm" onsubmit="submitBedForm(event)">
-            <div class="form-group">
+    <div id="bedModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
+            <h3>Bed Donation Registration</h3>
+            <form id="bedForm" onsubmit="submitBedForm(event)">
                 <label for="bedName">Full Name</label>
                 <input type="text" id="bedName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="bedEmail">Email Address</label>
+                
+                <label for="bedEmail">Email</label>
                 <input type="email" id="bedEmail" required>
-            </div>
-
-            <div class="form-group">
-                <label for="bedPhone">Phone Number</label>
+                
+                <label for="bedPhone">Phone</label>
                 <input type="tel" id="bedPhone" required>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bedType">Bed Type</label>
                 <select id="bedType" required>
                     <option value="">Select Bed Type</option>
                     <option value="Standard">Standard Hospital Bed</option>
                     <option value="ICU">ICU Bed</option>
                     <option value="Pediatric">Pediatric Bed</option>
-                    <option value="Operational">Operational Bed</option>
                 </select>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bedQuantity">Quantity</label>
                 <input type="number" id="bedQuantity" min="1" required>
-            </div>
-
-            <div class="form-group">
+                
                 <label for="bedHospital">Target Hospital</label>
                 <select id="bedHospital" required>
                     <option value="">Select Hospital</option>
-                    <option value="ABC Hospital">ABC Hospital</option>
-                    <option value="AIIMS Delhi">AIIMS Delhi</option>
-                    <option value="Corewell Health">Corewell Health</option>
+                    <option value="Ascension Providence Southfield">Ascension Providence Southfield</option>
+                    <option value="Ascension Providence Novi">Ascension Providence Novi</option>
+                    <option value="Corewell Health Royal Oak">Corewell Health Royal Oak</option>
                 </select>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
@@ -1399,25 +1371,21 @@
                         <p class="testimonial-text">Thanks to MedMax, my blood donation helped a patient in critical condition. It feels incredible to make a difference!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Samrath</span>
+                            <span class="author-name">Rahul Sharma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">The bed donated through MedMax gave my mother comfort during her recovery. Thank you for your support!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Abhishek Sharma</span>
+                            <span class="author-name">Ravi Verma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">MedMax’s blood donation drive saved my father’s life. I’m forever grateful for this initiative.</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-
-                            <span class="author-name">Ram Sharma</span>
-
-                            <span class="author-name">Abhimanyu sharma</span>
-
+                            <span class="author-name">Riya Sharma</span>
                         </div>
                     </div>
                 </div>
@@ -1455,7 +1423,7 @@
                         <div class="location-icon">🏥</div>
                         <h3 class="location-name">Beamount Hospital</h3>
                         <p class="location-description">
-                            Book a bed or join our blood donation drives. Contact us at 122-123-444 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
+                            Book a bed or join our blood donation drives. Contact us at 248-278-8484 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
                         </p>
                     </div>
                 </div>
@@ -1471,7 +1439,7 @@
                 <ul class="footer-links">
                     <li><a href="#">Our Mission</a></li>
                     <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Social handles</a></li>
+                    <li><a href="#">History</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1492,7 +1460,7 @@
             </div>
             <div class="footer-section footer-contact">
                 <h3>Contact</h3>
-                <p><i class="fas fa-phone"></i>123-123-444</p>
+                <p><i class="fas fa-phone"></i> 248-278-8484</p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:info@medmax.org">info@medmax.org</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Detroit, MI</p>
             </div>
@@ -1506,7 +1474,7 @@
             <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
             <h3>Donor Registration</h3>
             <form id="donationForm" onsubmit="submitDonationForm(event)">
-                <label for="name"> Name</label>
+                <label for="name">Full Name</label>
                 <input type="text" id="name" required>
                 
                 <label for="email">Email</label>
@@ -1559,7 +1527,7 @@
         function updateDedication() {
             const dedication = document.getElementById('dedication').checked;
             if (dedication) {
-                alert('Please fill all the details');
+                alert('Please provide dedication details in the registration form.');
             }
         }
 
@@ -1588,7 +1556,9 @@
             }
         }
 
-function submitDonationForm(e) {
+        // Form Submission
+      
+        function submitDonationForm(e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -1617,7 +1587,7 @@ function submitDonationForm(e) {
     }
 
     // Success case
-    showSuccess(`Thank you, ${name}! We will contact you  soon.`);
+    showSuccess(`Thank you, ${name}! Your donation of ₹${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
     closeModal('registerModal');
 }
 
@@ -1667,60 +1637,51 @@ function submitBedForm(e) {
     const hospital = document.getElementById('bedHospital').value.trim();
 
     // Validation checks
-  // Validate form input fields
-if (!name || !email || !phone || !bedType || !quantity || !hospital) {
-    showError("All fields are required. Please fill in all the information.");
-    return;
+    if (!name || !email || !phone || !bedType || !quantity || !hospital) {
+        showError("Please fill all required fields.");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+    }
+
+    if (!isValidPhone(phone)) {
+        showError("Please enter a valid phone number (10 digits).");
+        return;
+    }
+
+    if (isNaN(quantity) || quantity <= 0) {
+        showError("Bed quantity must be a positive number.");
+        return;
+    }
+
+    // Success case
+    showSuccess(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
+    closeModal('bedModal');
 }
-
-if (!isValidEmail(email)) {
-    showError("Please enter a valid email address.");
-    return;
-}
-
-if (!isValidPhone(phone)) {
-    showError("Please enter a valid 10-digit phone number.");
-    return;
-}
-
-if (isNaN(quantity) || quantity <= 0) {
-    showError("Please enter a valid positive bed quantity.");
-    return;
-}
-
-// Success case
-showSuccess(`Thank you, ${name}! MedMax will reach out to you shortly.`);
-closeModal('bedModal');
-
 
 // Helper Functions
-// Function to validate email using a regular expression
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
 }
 
-// Function to validate phone number (assumes 10-digit format)
 function isValidPhone(phone) {
-    const phoneRegex = /^\d{10}$/;
-    return phoneRegex.test(phone);
+    return /^\d{10}$/.test(phone);
 }
 
-// Function to display error message in a custom popup
 function showError(message) {
-    // Create error popup container
+    // Create error popup
     const popup = document.createElement('div');
     popup.className = 'custom-popup error';
-
-    // Error message content with improved accessibility
     popup.innerHTML = `
         <div class="popup-content">
-            <span class="popup-icon" role="img" aria-label="Error">X</span>
+            <span class="popup-icon">✕</span>
             <p>${message}</p>
         </div>
     `;
-
-    // Append the popup to the body and remove it after 5 seconds
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 5000);
 }
@@ -1738,7 +1699,6 @@ function showSuccess(message) {
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 5000);
 }
-
     </script>
 </body>
 </html>
