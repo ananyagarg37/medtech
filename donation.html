@@ -992,6 +992,45 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
+        .custom-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s;
+}
+
+.custom-popup.success {
+    background-color: #4CAF50;
+}
+
+.custom-popup.error {
+    background-color: #f44336;
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+}
+
+.popup-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
 
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -1126,7 +1165,7 @@
                 </h1>
                 <h2 class="hero-subtitle">Saving Lives Through Blood and Bed Donations</h2>
                 <p class="hero-description">
-                    At MedMax, we provide critical support to hospitals by facilitating blood and bed donations. Your contribution can save lives by ensuring patients have access to vital resources. Join us in making a difference today.
+                    At MedMax, we provide critical support to hospitals by facilitating blood and bed donations. Your contribution can save lives by ensuring patients have access to vital resources.
                 </p>
             </div>
             <img src="woman-removebg-preview.png" alt="Woman holding linens" class="hero-image">
@@ -1209,7 +1248,7 @@
                     <div class="service-text">
                         <h3 class="service-title">Blood Donation</h3>
                         <p class="service-description">
-                            One drop of blood can save millions of lives. Register to donate blood and help patients in critical need.
+                            One drop of blood can save millions of lives
                         </p>
                         <div class="service-buttons">
                             <a href="#" class="service-btn service-donate" onclick="openModal('blood')">REGISTER NOW</a>
@@ -1241,7 +1280,7 @@
             <span class="close-btn" onclick="closeModal('bloodModal')">&times;</span>
             <h3>Blood Donation Registration</h3>
             <form id="bloodForm" onsubmit="submitBloodForm(event)">
-                <label for="bloodName">Full Name</label>
+                <label for="bloodName"> Name</label>
                 <input type="text" id="bloodName" required>
                 
                 <label for="bloodEmail">Email</label>
@@ -1335,21 +1374,25 @@
                         <p class="testimonial-text">Thanks to MedMax, my blood donation helped a patient in critical condition. It feels incredible to make a difference!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Rahul Sharma</span>
+                            <span class="author-name">Samrath</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">The bed donated through MedMax gave my mother comfort during her recovery. Thank you for your support!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Ravi Verma</span>
+                            <span class="author-name">Abhishek Sharma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">MedMax’s blood donation drive saved my father’s life. I’m forever grateful for this initiative.</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
+
                             <span class="author-name">Ram Sharma</span>
+
+                            <span class="author-name">Abhimanyu sharma</span>
+
                         </div>
                     </div>
                 </div>
@@ -1520,7 +1563,7 @@
             }
         }
 
-   function submitDonationForm(e) {
+function submitDonationForm(e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -1549,7 +1592,7 @@
     }
 
     // Success case
-    alert(`Thank you, ${name}! Your donation of ₹${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
+    showSuccess(`Thank you, ${name}! Your donation of ₹${amount} has been recorded. We will contact you at ${email} or ${phone}.`);
     closeModal('registerModal');
 }
 
@@ -1585,7 +1628,7 @@ function submitBloodForm(e) {
     }
 
     // Success case
-    alert(`Thank you, ${name}! Your blood donation (${bloodGroup}) at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
+    showSuccess(`Thank you, ${name}! Your blood donation (${bloodGroup}) at ${hospital} on ${date} has been recorded. We will contact you at ${email} or ${phone}.`);
     closeModal('bloodModal');
 }
 
@@ -1619,9 +1662,10 @@ function submitBedForm(e) {
         return;
     }
 
-    // Success case
-    alert(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
-    closeModal('bedModal');
+  // Success case
+showSuccess(`Thank you, ${name}! MedMax will contact you soon.`);
+closeModal('bedModal');
+
 }
 
 // Helper Functions
@@ -1635,13 +1679,33 @@ function isValidPhone(phone) {
 }
 
 function showError(message) {
-    alert(message); // Replace with a better error display (e.g., a <div class="error-message">)
+    // Create error popup
+    const popup = document.createElement('div');
+    popup.className = 'custom-popup error';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="popup-icon">✕</span>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 5000);
 }
 
-// Open Donation Modal
-document.querySelector('.donate-now-btn').addEventListener('click', () => {
-    openModal('register');
-});
+function showSuccess(message) {
+    // Create success popup with green tick
+    const popup = document.createElement('div');
+    popup.className = 'custom-popup success';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="popup-icon">✓</span>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 5000);
+}
+
     </script>
 </body>
 </html>

@@ -3,36 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MedTech Signup</title>
-  <link rel="stylesheet" href="med.css" />
+  <title>MedTech Auth</title>
+  <link rel="stylesheet" href="med.css" href="md1.html.html" />
 </head>
 <body>
 
   <!-- Background -->
   <div class="background"></div>
 
-  <!-- Signup Form -->
-  <div class="signup-container">
-    <h2>Join <span>MedTech</span></h2>
-    <form id="signupForm">
-      <input type="text" id="fullname" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
-      
-      <select id="gender" required>
-        <option value="" disabled selected>Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
-      
-      <button type="submit">Sign Up</button>
-      <p id="message"></p>
-    </form>
-  </div>
+  <!-- Authentication Container -->
+  <div class="auth-container">
+    
+    <!-- Signup Form -->
+    <div id="signupContainer" class="form-container">
+      <h2>Join <span>MedTech</span></h2>
+      <form id="signupForm">
+        <input type="text" id="fullname" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+        
+        <select id="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Others</option>
+        </select>
+        
+        <p id="signupMessage"></p>
+      </form>
+    </div>
 
- <!-- Signin Form -->
+    <!-- Signin Form -->
     <div id="signinContainer" class="form-container" style="display: none;">
       <h2>Welcome Back to <span>MedTech</span></h2>
       <form id="signinForm">
@@ -120,4 +122,7 @@
   <script src="med.js"></script>
 </body>
 </html>
+
+
+
 

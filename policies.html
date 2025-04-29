@@ -1,54 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Health Insurance Policies | Your MedTech Company</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Insurance Policies | MedMax</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #2c3e50;
+      background-color: white;
       color: #ecf0f1;
     }
+
     header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
+      background-color: #15678a;
+      padding: 20px 0;
+      border-bottom: 1px solid #10a1df;
     }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo-text span:first-child {
+      font-size: 0.9rem;
+      color: #ecf0f1;
+    }
+
+    .logo-text span:last-child {
+      font-weight: bold;
+      color: #1abc9c;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      color: #1abc9c;
+    }
+
+    nav ul li.active::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background-color: #1abc9c;
+      border-radius: 50%;
+      margin: auto;
+      margin-top: 5px;
+    }
+
+    .contact-donate {
+      display: flex;
+      align-items: center;
+    }
+
+    .phone {
+      margin-right: 20px;
+      color: #ecf0f1;
+    }
+
+    .donate-btn {
+      background-color: #1abc9c;
+      color: #15678a;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #16a085;
+    }
+
     main {
       padding: 30px;
       max-width: 900px;
       margin: auto;
     }
+
     section {
-      background-color: #34495e;
+      background-color: #0e4e6a;
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+
     h2 {
       color: #1abc9c;
     }
+
     footer {
-      background-color: #1a252f;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
+      background-color: #15678a;
       color: #bdc3c7;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-section h3 {
+      color: #1abc9c;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #bdc3c7;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #1abc9c;
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+    }
+
+    .footer-contact a {
+      color: #bdc3c7;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+      color: #1abc9c;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #7f8c8d;
+      border-top: 1px solid #0e4e6a;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Health Insurance Policies</h1>
-    <p>Comprehensive coverage tailored to your health needs</p>
-  </header>
-  <main>
 
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <div class="logo-text">
+          <span>MedMax</span>
+        <header>
+          <div class="container header-container">
+          <div class="logo-text">
+            <span>MEDMAX</span>
+          
+        </div>
+      </div>
+    </div>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+                <li class="active"><a href="#">Donation</a></li>
+                <li><a href="policies.html">Policies</a></li>
+                <li><a href="hospitals.html">Hospitals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-donate">
+            <div class="phone">
+                <i>📞</i>
+                <span>Call 248-278-8484</span>
+            </div>
+            <a href="#services" class="donate-btn">Donate</a>
+        </div>
+    </div>
+</header>
+
+  <!-- MAIN CONTENT -->
+  <main>
     <section>
       <h2>🔹 Individual Health Insurance Plan</h2>
       <p><strong>Ideal for:</strong> Individuals seeking standalone health coverage</p>
@@ -92,11 +266,43 @@
         <li>Renewable for life</li>
       </ul>
     </section>
-
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Your MedTech Company. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About MedMax</h3>
+        <ul class="footer-links">
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">History</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Blood Donation</a></li>
+          <li><a href="#">Bed Donation</a></li>
+          <li><a href="#">Community Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hospitals</h3>
+        <ul class="footer-links">
+          <li><a href="#">ABC Hospital</a></li>
+          <li><a href="#">Corewell Health</a></li>
+          <li><a href="#">Beaumont Hospital</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-contact">
+        <h3>Contact</h3>
+        <p>📞 123-123-444</p>
+        <p>✉️ <a href="mailto:info@medmax.org">info@medmax.org</a></p>
+        <p>📍 Detroit, MI</p>
+      </div>
+    </div>
+    <div class="copyright">© 2025 MedMax. All rights reserved.</div>
   </footer>
 </body>
 </html>
