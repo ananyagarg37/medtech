@@ -1275,20 +1275,27 @@
     </section>
 
     <!-- Blood Donation Modal -->
-    <div id="bloodModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('bloodModal')">&times;</span>
-            <h3>Blood Donation Registration</h3>
-            <form id="bloodForm" onsubmit="submitBloodForm(event)">
-                <label for="bloodName"> Name</label>
+   <div id="bloodModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('bloodModal')">&times;</span>
+        <h2 class="modal-title">Blood Donation Registration</h2>
+        <form id="bloodForm" onsubmit="submitBloodForm(event)">
+            <div class="form-group">
+                <label for="bloodName">Full Name</label>
                 <input type="text" id="bloodName" required>
-                
-                <label for="bloodEmail">Email</label>
+            </div>
+
+            <div class="form-group">
+                <label for="bloodEmail">Email Address</label>
                 <input type="email" id="bloodEmail" required>
-                
-                <label for="bloodPhone">Phone</label>
+            </div>
+
+            <div class="form-group">
+                <label for="bloodPhone">Phone Number</label>
                 <input type="tel" id="bloodPhone" required>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bloodGroup">Blood Group</label>
                 <select id="bloodGroup" required>
                     <option value="">Select Blood Group</option>
@@ -1301,10 +1308,14 @@
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
                 </select>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bloodDate">Preferred Donation Date</label>
                 <input type="date" id="bloodDate" required>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bloodHospital">Preferred Hospital</label>
                 <select id="bloodHospital" required>
                     <option value="">Select Hospital</option>
@@ -1312,51 +1323,65 @@
                     <option value="Ascension Providence Novi">Ascension Providence Novi</option>
                     <option value="Corewell Health Royal Oak">Corewell Health Royal Oak</option>
                 </select>
-                
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
+</div>
+
 
     <!-- Bed Donation Modal -->
-    <div id="bedModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
-            <h3>Bed Donation Registration</h3>
-            <form id="bedForm" onsubmit="submitBedForm(event)">
-                <label for="bedName">Name</label>
+   <div id="bedModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
+        <h2 class="modal-title">Bed Donation Registration</h2>
+        <form id="bedForm" onsubmit="submitBedForm(event)">
+            <div class="form-group">
+                <label for="bedName">Full Name</label>
                 <input type="text" id="bedName" required>
-                
-                <label for="bedEmail">Email</label>
+            </div>
+
+            <div class="form-group">
+                <label for="bedEmail">Email Address</label>
                 <input type="email" id="bedEmail" required>
-                
-                <label for="bedPhone">Phone</label>
+            </div>
+
+            <div class="form-group">
+                <label for="bedPhone">Phone Number</label>
                 <input type="tel" id="bedPhone" required>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bedType">Bed Type</label>
                 <select id="bedType" required>
                     <option value="">Select Bed Type</option>
                     <option value="Standard">Standard Hospital Bed</option>
                     <option value="ICU">ICU Bed</option>
                     <option value="Pediatric">Pediatric Bed</option>
-                     <option value="Pediatric">operational Bed</option>
+                    <option value="Operational">Operational Bed</option>
                 </select>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bedQuantity">Quantity</label>
                 <input type="number" id="bedQuantity" min="1" required>
-                
+            </div>
+
+            <div class="form-group">
                 <label for="bedHospital">Target Hospital</label>
                 <select id="bedHospital" required>
                     <option value="">Select Hospital</option>
-                    <option value="Ascension Providence Southfield">ABC Hospital</option>
-                    <option value="Ascension Providence Novi">AIIMS Delhi</option>
-                    <option value="Corewell Health Royal Oak">Corewell Health </option>
+                    <option value="ABC Hospital">ABC Hospital</option>
+                    <option value="AIIMS Delhi">AIIMS Delhi</option>
+                    <option value="Corewell Health">Corewell Health</option>
                 </select>
-                
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
+</div>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
