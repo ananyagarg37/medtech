@@ -1667,31 +1667,31 @@ function submitBedForm(e) {
     const hospital = document.getElementById('bedHospital').value.trim();
 
     // Validation checks
-    if (!name || !email || !phone || !bedType || !quantity || !hospital) {
-        showError("Please fill all required fields.");
-        return;
-    }
+  // Validate form input fields
+if (!name || !email || !phone || !bedType || !quantity || !hospital) {
+    showError("All fields are required. Please fill in all the information.");
+    return;
+}
 
-    if (!isValidEmail(email)) {
-        showError("Please enter a valid email address.");
-        return;
-    }
+if (!isValidEmail(email)) {
+    showError("Please enter a valid email address.");
+    return;
+}
 
-    if (!isValidPhone(phone)) {
-        showError("Please enter a valid phone number (10 digits).");
-        return;
-    }
+if (!isValidPhone(phone)) {
+    showError("Please enter a valid 10-digit phone number.");
+    return;
+}
 
-    if (isNaN(quantity) || quantity <= 0) {
-        showError("Bed quantity must be a positive number.");
-        return;
-    }
+if (isNaN(quantity) || quantity <= 0) {
+    showError("Please enter a valid positive bed quantity.");
+    return;
+}
 
-  // Success case
-showSuccess(`Thank you, ${name}! MedMax will contact you soon.`);
+// Success case
+showSuccess(`Thank you, ${name}! MedMax will reach out to you shortly.`);
 closeModal('bedModal');
 
-}
 
 // Helper Functions
 // Function to validate email using a regular expression
