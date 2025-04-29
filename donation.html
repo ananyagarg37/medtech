@@ -1658,9 +1658,10 @@ function submitBedForm(e) {
         return;
     }
 
-    // Success case
-    showSuccess(`Thank you, ${name}! Your donation of ${quantity} ${bedType} bed(s) to ${hospital} has been recorded. We will contact you at ${email} or ${phone}.`);
-    closeModal('bedModal');
+  // Success case
+showSuccess(`Thank you, ${name}! MedMax will contact you soon.`);
+closeModal('bedModal');
+
 }
 
 // Helper Functions
