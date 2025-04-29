@@ -1678,19 +1678,22 @@ function isValidPhone(phone) {
     return /^\d{10}$/.test(phone);
 }
 
+
 function showError(message) {
     // Create error popup
     const popup = document.createElement('div');
     popup.className = 'custom-popup error';
     popup.innerHTML = `
         <div class="popup-content">
-            <span class="popup-icon">✕</span>
-            <p>${message}</p>
+            <span class="popup-icon">X</span>
+            <p>Error: ${message}</p>
         </div>
     `;
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 5000);
 }
+
+
 
 function showSuccess(message) {
     // Create success popup with green tick
