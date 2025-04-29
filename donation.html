@@ -1694,31 +1694,36 @@ closeModal('bedModal');
 }
 
 // Helper Functions
+// Function to validate email using a regular expression
 function isValidEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
+// Function to validate phone number (assumes 10-digit format)
 function isValidPhone(phone) {
-    return /^\d{10}$/.test(phone);
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
 }
 
-
+// Function to display error message in a custom popup
 function showError(message) {
-    // Create error popup
+    // Create error popup container
     const popup = document.createElement('div');
     popup.className = 'custom-popup error';
+
+    // Error message content with improved accessibility
     popup.innerHTML = `
         <div class="popup-content">
-            <span class="popup-icon">X</span>
-            <p>Error: ${message}</p>
+            <span class="popup-icon" role="img" aria-label="Error">X</span>
+            <p>${message}</p>
         </div>
     `;
+
+    // Append the popup to the body and remove it after 5 seconds
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 5000);
 }
-
-
 
 function showSuccess(message) {
     // Create success popup with green tick
