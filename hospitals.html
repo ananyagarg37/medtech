@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Variables */
+        :root {
+            --primary-color: #15678a;
+            --secondary-color: #000000;
+            --light-color: #fbfbfa;
+            --dark-color: #000000;
+            --gray-color: #9cafbe;
+            --blue-color: #6b9ec1;
+            --brown-color: #7199b7;
+            --light-gray: #c5cdd0;
+            --accent-color: #86655e;
+            --beige-color: #cec0af;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --danger-color: #F44336;
+            --info-color: #2196F3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+            padding-top: 0;
+            min-height: 100vh;
+        }
+
+        /* New Header Styles */
+        header {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text span:last-child {
+            font-weight: bold;
+            color: #0e4d7a;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li {
+            margin-left: 35px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: #62c5e8;
+        }
+
+        nav ul li.active::after {
+            content: '•';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #62c5e8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .contact-donate {
+            display: flex;
+            align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone:hover {
+            opacity: 0.7;
+        }
+
+        .donate-btn {
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.4s ease;
+        }
+
+        .donate-btn:hover::after {
+            width: 200%;
+            left: 0;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0e4d7a 0%, #62c5e8 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-search {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-search input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .hero-search button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-search button:hover {
+            background: #0e4d7a;
+        }
+
+        /* Content Styles */
+        .content-wrapper {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hospital-count {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .hospital-count i {
+            margin-right: 10px;
+            color: var(--info-color);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-btn i {
+            margin-right: 5px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Hospital Card Styles */
+        .hospital-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hospital-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hospital-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hospital-card:hover::before {
+            opacity: 1;
+        }
+
+        .hospital-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .hospital-info {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+
+        .hospital-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hospital-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .specialties-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty-tag {
+            background-color: #e9f5f6;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .specialty-tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Doctor Section Styles */
+        .doctors-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .doctors-section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .doctors-section-title i {
+            margin-right: 8px;
+        }
+
+        .doctors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .doctor-item {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .doctor-item:hover {
+            background-color: #e9f5f6;
+            transform: translateY(-2px);
+        }
+
+        .doctor-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .view-all-doctors {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-doctors:hover {
+            color: #0e4d7a;
+            text-decoration: underline;
+        }
+
+        /* Doctors Preview Section */
+        .doctors-preview-section {
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doctors-preview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), #62c5e8);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .doctors-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .doctor-preview-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doctor-preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), #62c5e8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .doctor-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .doctor-preview-card:hover::before {
+            opacity: 1;
+        }
+
+        .doctor-preview-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+            padding: 3px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .doctor-preview-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .doctor-preview-card p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .view-profile {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .view-profile:hover {
+            background: #0e4d7a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .view-all-doctors {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-view-all {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.3);
+        }
+
+        .btn-view-all:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(98, 197, 232, 0.4);
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 60px 0 20px;
+            background: #0e4d7a;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #62c5e8, var(--primary-color));
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #fff;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #62c5e8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #62c5e8;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #62c5e8;
+            width: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Popup Styles */
+        .custom-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideIn 0.5s, fadeOut 0.5s 4.5s;
+        }
+
+        .custom-popup.success {
+            background-color: #4CAF50;
+        }
+
+        .custom-popup.error {
+            background-color: #f44336;
+        }
+
+        .popup-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .popup-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-search {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+
+            .hero-search input {
+                border-radius: 10px 10px 0 0;
+            }
+
+            .hero-search button {
+                border-radius: 0 0 10px 10px;
+            }
+
+            .filter-options {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hospital-card {
+                padding: 1rem;
+            }
+
+            .doctors-preview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- New Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <span>MEDMAX</span>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="doctor.html">Doctors</a></li>
+                    <li class="active"><a href="#">Donation</a></li>
+                    <li><a href="policies.html">Policies</a></li>
+                    <li><a href="hospitals.html">Hospitals</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-donate">
+                <div class="phone">
+                    <i>📞</i>
+                    <span>Call 248-278-8484</span>
+                </div>
+                <a href="#services" class="donate-btn">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Find Hospitals Near You</h1>
+                <p class="hero-subtitle">Discover healthcare facilities with available beds and specialized doctors</p>
+                <div class="hero-search">
+                    <input type="text" placeholder="Search by location, hospital name, or specialty...">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Doctors Section -->
+        <div class="doctors-preview-section">
+            <div class="section-header">
+                <h2>Our Top Doctors</h2>
+                <p>Meet our experienced medical professionals who are dedicated to your health</p>
+            </div>
+            <div class="doctors-preview-grid">
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Dr. Rajendar Kumar">
+                    <h3>Dr. Rajendar Kumar</h3>
+                    <p>Anesthesiology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Ramesh Malhotra">
+                    <h3>Dr. Ramesh Malhotra</h3>
+                    <p>Cardiology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+                <div class="doctor-preview-card">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr. Mahesh Kumar">
+                    <h3>Dr. Mahesh Kumar</h3>
+                    <p>Neurology</p>
+                    <a href="doctor.html" class="view-profile">View Profile</a>
+                </div>
+            </div>
+            <div class="view-all-doctors">
+                <a href="doctor.html" class="btn-view-all">View All Doctors</a>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="hospital-count">
+                    <i class="fas fa-hospital"></i>
+                    Available Hospitals <span id="totalHospitals">4</span>
+                </div>
+                <div class="filter-options">
+                    <button class="filter-btn active"><i class="fas fa-filter"></i> All</button>
+                    <button class="filter-btn"><i class="fas fa-bed"></i> Available Beds</button>
+                    <button class="filter-btn"><i class="fas fa-user-md"></i> Specialists</button>
+                </div>
+            </div>
+
+            <div class="row" id="hospitalsList">
+                <!-- Hospitals will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>About MedMax</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">History</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blood Donation</a></li>
+                    <li><a href="#">Bed Donation</a></li>
+                    <li><a href="#">Community Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Hospitals</h3>
+                <ul class="footer-links">
+                    <li><a href="#">ABC hospital</a></li>
+                    <li><a href="#">Corewell Health</a></li>
+                    <li><a href="#">Beamount Hospital</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-phone"></i>123-123-444</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@medmax.org">info@medmax.org</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Detroit, MI</p>
+            </div>
+        </div>
+        <div class="copyright">© 2025 MedMax. All rights reserved.</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample doctor data
+        const sampleDoctors = [
+            {
+                name: 'Dr. Rajendar Kumar',
+                specialty: 'Anesthesiology',
+                image: 'https://randomuser.me/api/portraits/men/36.jpg'
+            },
+            {
+                name: 'Dr. Ramesh Malhotra',
+                specialty: 'Cardiology',
+                image: 'https://randomuser.me/api/portraits/men/32.jpg'
+            },
+            {
+                name: 'Dr. Mahesh Kumar',
+                specialty: 'Neurology',
+                image: 'https://randomuser.me/api/portraits/men/45.jpg'
+            },
+            {
+                name: 'Dr. Suresh Lamba',
+                specialty: 'Oncology',
+                image: 'https://randomuser.me/api/portraits/men/41.jpg'
+            }
+        ];
+
+        async function loadHospitals() {
+            try {
+                const response = await fetch('/api/hospitals');
+                const hospitals = await response.json();
+                displayHospitals(hospitals);
+                updateStats(hospitals);
+            } catch (error) {
+                console.error('Error loading hospitals:', error);
+                // Show sample data if API fails
+                displaySampleHospitals();
+            }
+        }
+
+        function displaySampleHospitals() {
+            const sampleHospitals = [
+                {
+                    name: "City General Hospital",
+                    location: "123 Main Street, Punjab",
+                    available_beds: 45,
+                    total_beds: 100,
+                    doctors: sampleDoctors.slice(0, 3)
+                },
+                {
+                    name: "Medicare Hospital",
+                    location: "456 Park Avenue, Punjab",
+                    available_beds: 30,
+                    total_beds: 80,
+                    doctors: sampleDoctors.slice(1, 4)
+                },
+                {
+                    name: "Life Care Hospital",
+                    location: "789 Health Road, Punjab",
+                    available_beds: 25,
+                    total_beds: 60,
+                    doctors: sampleDoctors.slice(0, 2)
+                },
+                {
+                    name: "Apollo Medical Center",
+                    location: "321 Medical Park, Chandigarh",
+                    available_beds: 75,
+                    total_beds: 150,
+                    doctors: sampleDoctors.slice(0, 4)
+                },
+                {
+                    name: "Fortis Healthcare",
+                    location: "567 Health Boulevard, Amritsar",
+                    available_beds: 60,
+                    total_beds: 120,
+                    doctors: sampleDoctors.slice(1, 3)
+                },
+                {
+                    name: "Max Super Speciality Hospital",
+                    location: "890 Wellness Street, Ludhiana",
+                    available_beds: 40,
+                    total_beds: 90,
+                    doctors: sampleDoctors.slice(2, 4)
+                },
+                {
+                    name: "Columbia Asia Hospital",
+                    location: "432 Medical Lane, Jalandhar",
+                    available_beds: 55,
+                    total_beds: 110,
+                    doctors: sampleDoctors.slice(0, 3)
+                },
+                {
+                    name: "Narayana Health City",
+                    location: "765 Healthcare Avenue, Patiala",
+                    available_beds: 35,
+                    total_beds: 70,
+                    doctors: sampleDoctors.slice(1, 4)
+                },
+                {
+                    name: "Manipal Hospital",
+                    location: "234 Health Circle, Mohali",
+                    available_beds: 50,
+                    total_beds: 100,
+                    doctors: sampleDoctors.slice(0, 2)
+                }
+            ];
+            displayHospitals(sampleHospitals);
+            updateStats(sampleHospitals);
+        }
+
+        function displayHospitals(hospitals) {
+            const hospitalsList = document.getElementById('hospitalsList');
+            hospitalsList.innerHTML = hospitals.map(hospital => `
+                <div class="col-md-4 mb-4">
+                    <div class="hospital-card">
+                        <div class="hospital-name">
+                            ${hospital.name}
+                            <span class="status-badge">Active</span>
+                        </div>
+                        <div class="hospital-info">
+                            <p><i class="fas fa-map-marker-alt"></i>${hospital.location}</p>
+                            <p><i class="fas fa-bed"></i>${hospital.available_beds} / ${hospital.total_beds} beds available</p>
+                            <p><i class="fas fa-user-md"></i>${hospital.doctors.length} Doctors</p>
+                        </div>
+                        <div class="specialties-tags">
+                            <span class="specialty-tag">Cardiology</span>
+                            <span class="specialty-tag">Neurology</span>
+                            <span class="specialty-tag">Oncology</span>
+                        </div>
+                        
+                        <!-- Doctors Section -->
+                        <div class="doctors-section">
+                            <div class="doctors-section-title">
+                                <i class="fas fa-user-md"></i> Doctors
+                            </div>
+                            <div class="doctors-list">
+                                ${hospital.doctors.map(doctor => `
+                                    <div class="doctor-item">
+                                        <img src="${doctor.image}" alt="${doctor.name}" class="doctor-avatar">
+                                        <span>${doctor.name.split(' ')[0]}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <a href="doctor.html" class="view-all-doctors">
+                                <i class="fas fa-arrow-right me-1"></i> View all doctors
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats(hospitals) {
+            document.getElementById('totalHospitals').textContent = hospitals.length;
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Here you would implement the actual filtering logic
+            });
+        });
+
+        // Load hospitals when the page loads
+        document.addEventListener('DOMContentLoaded', loadHospitals);
+    </script>
+</body>
+</html> 
