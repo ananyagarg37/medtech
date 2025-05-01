@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MedTech Auth</title>
-  <link rel="stylesheet" href="med.css" href="md1.html.html" />
+  <link rel="stylesheet" href="med.css">
 </head>
 <body>
 
@@ -27,11 +27,13 @@
           <option value="" disabled selected>Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
-          <option value="other">Others</option>
+          <option value="other">Other</option>
         </select>
         
+        <button type="submit">Sign Up</button>
         <p id="signupMessage"></p>
       </form>
+      <p>Already have an account? <a href="#" id="toSignin">Log in</a></p>
     </div>
 
     <!-- Signin Form -->
@@ -40,43 +42,39 @@
       <form id="signinForm">
         <input type="email" id="signinEmail" placeholder="Email" required />
         <input type="password" id="signinPassword" placeholder="Password" required />
-        
+        <button type="submit">Log In</button>
         <p id="signinMessage"></p>
       </form>
-    </div>
-
-    <!-- Toggle Buttons -->
-    <div class="toggle-buttons">
-      <button id="showSignup">Sign Up</button>
-      <button id="showSignin">Sign In</button>
+      <p>Don’t have an account? <a href="#" id="toSignup">Sign up</a></p>
     </div>
 
   </div>
 
+  <!-- JavaScript -->
   <script>
-    // Toggle between Sign Up and Sign In forms
-    document.getElementById('showSignup').addEventListener('click', () => {
-      document.getElementById('signupContainer').style.display = 'block';
-      document.getElementById('signinContainer').style.display = 'none';
-    });
-
-    document.getElementById('showSignin').addEventListener('click', () => {
+    // Toggle between forms
+    document.getElementById('toSignin').addEventListener('click', (e) => {
+      e.preventDefault();
       document.getElementById('signupContainer').style.display = 'none';
       document.getElementById('signinContainer').style.display = 'block';
     });
 
-    // Sign Up Form Validation
+    document.getElementById('toSignup').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('signupContainer').style.display = 'block';
+      document.getElementById('signinContainer').style.display = 'none';
+    });
+
+    // Signup
     document.getElementById('signupForm').addEventListener('submit', function (e) {
       e.preventDefault();
-
-      const fullname = document.getElementById('fullname').value;
-      const email = document.getElementById('email').value;
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
       const gender = document.getElementById('gender').value;
       const message = document.getElementById('signupMessage');
 
-      // Form validation
       if (!fullname || !email || !password || !confirmPassword || !gender) {
         message.style.color = "red";
         message.textContent = "Please fill in all fields!";
@@ -89,40 +87,50 @@
         return;
       }
 
+      const user = { fullname, email, password, gender };
+      localStorage.setItem("medtechUser", JSON.stringify(user));
+
       message.style.color = "green";
-      message.textContent = "Signup successful!";
-      
-      // Clear the form after successful submission
-      document.getElementById('signupForm').reset();
+      message.textContent = "Signup successful! Redirecting...";
+
+      setTimeout(() => {
+        document.getElementById('signupForm').reset();
+        window.location.href = "home.html"; // Make sure this file exists
+      }, 1500);
     });
 
-    // Sign In Form Validation
+    // Signin
     document.getElementById('signinForm').addEventListener('submit', function (e) {
       e.preventDefault();
-
-      const email = document.getElementById('signinEmail').value;
+      const email = document.getElementById('signinEmail').value.trim();
       const password = document.getElementById('signinPassword').value;
       const message = document.getElementById('signinMessage');
 
-      // Form validation
+      const storedUser = JSON.parse(localStorage.getItem("medtechUser"));
+
       if (!email || !password) {
         message.style.color = "red";
         message.textContent = "Please fill in all fields!";
         return;
       }
 
+      if (!storedUser || storedUser.email !== email || storedUser.password !== password) {
+        message.style.color = "red";
+        message.textContent = "Invalid email or password!";
+        return;
+      }
+
       message.style.color = "green";
-      message.textContent = "Signin successful!";
-      
-      // Clear the form after successful submission
-      document.getElementById('signinForm').reset();
+      message.textContent = "Signin successful! Redirecting...";
+
+      sessionStorage.setItem("loggedInUser", JSON.stringify(storedUser));
+
+      setTimeout(() => {
+        document.getElementById('signinForm').reset();
+        window.location.href = "home.html"; // Redirect to home page
+      }, 1500);
     });
   </script>
 
-  <script src="med.js"></script>
 </body>
 </html>
-
-
-
-
