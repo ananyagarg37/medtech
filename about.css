@@ -11,7 +11,7 @@
 }
 
 .heading h1 {
-    color: #2a9d8f; /* A more medical/healthcare-oriented color */
+    color: #0e4d7a; /* A more medical/healthcare-oriented color */
     font-size: 55px;
     text-align: center;
     margin-top: 35px;
@@ -266,7 +266,7 @@ nav ul li.active::after {
 }
 footer {
     padding: 60px 0 20px;
-    background:#2a9d8f;
+    background:#0e4d7a;
     color: #fff;
 }
 
