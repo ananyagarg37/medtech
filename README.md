@@ -81,7 +81,7 @@ Our project team consists of skilled members, each responsible for specific aspe
 ## Get Involved  
 Interested in contributing to MedMax? Whether you're a **developer, designer, or healthcare professional**, we welcome collaboration to enhance healthcare accessibility!  
 
----
+
 
 
 
