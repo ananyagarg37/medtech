@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
+<head><!DOCTYPE html>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedMax</title>
@@ -1119,40 +1119,38 @@
             }
         }
     </style>
- </head>
+</head>
 <body>
-   <header>
-    <div class="container header-container">
-        <div class="logo">
-            <div class="logo-text">
-                <span>MEDMAX</span>
+    <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo-text">
+            <div class="logo">
+                
+                <div class="logo-text">
+                    <span></span>
                     <span>MEDMAX</span>
-          </div>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="./aboutus1.html">About</a></li>
+                    <li><a href="./donation.html"> Donation</a></li>
+                    <li><a href="./policies.html">Policies</a></li>
+                    <li><a href="./hospitals.html">Hospitals</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-donate">
+                <div class="phone">
+                    <i>📞</i>
+                    <span>Call 248-278-8484</span>
+                </div>
+                <a href="#services" class="donate-btn">Donate</a>
             </div>
         </div>
-
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="#">Donation</a></li>
-                <li><a href="policies.html">Policies</a></li>
-                <li><a href="hospitals.html">Hospitals</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="contact-donate">
-            <div class="phone">
-                <i>📞</i>
-                <span>Call 248-278-8484</span>
-            </div>
-            <a href="#services" class="donate-btn">Donate</a>
-        </div>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1213,7 +1211,7 @@
                         <div class="checkbox" onclick="toggleCheckbox(this)"></div>
                         <div class="amount">₹10000</div>
                     </div>
-                    <p class="donation-purpose">Fund a  blood donation campaigns.</p>
+                    <p class="donation-purpose">Fund a week of blood donation campaigns.</p>
                 </div>
                 <div class="donation-option">
                     <div class="donation-option-header">
@@ -1324,7 +1322,7 @@
             <span class="close-btn" onclick="closeModal('bedModal')">&times;</span>
             <h3>Bed Donation Registration</h3>
             <form id="bedForm" onsubmit="submitBedForm(event)">
-                <label for="bedName">Name</label>
+                <label for="bedName">Full Name</label>
                 <input type="text" id="bedName" required>
                 
                 <label for="bedEmail">Email</label>
@@ -1339,7 +1337,6 @@
                     <option value="Standard">Standard Hospital Bed</option>
                     <option value="ICU">ICU Bed</option>
                     <option value="Pediatric">Pediatric Bed</option>
-                     <option value="Pediatric">operational Bed</option>
                 </select>
                 
                 <label for="bedQuantity">Quantity</label>
@@ -1348,9 +1345,9 @@
                 <label for="bedHospital">Target Hospital</label>
                 <select id="bedHospital" required>
                     <option value="">Select Hospital</option>
-                    <option value="Ascension Providence Southfield">ABC Hospital</option>
-                    <option value="Ascension Providence Novi">AIIMS Delhi</option>
-                    <option value="Corewell Health Royal Oak">Corewell Health </option>
+                    <option value="Ascension Providence Southfield">Ascension Providence Southfield</option>
+                    <option value="Ascension Providence Novi">Ascension Providence Novi</option>
+                    <option value="Corewell Health Royal Oak">Corewell Health Royal Oak</option>
                 </select>
                 
                 <button type="submit">Submit</button>
@@ -1374,21 +1371,21 @@
                         <p class="testimonial-text">Thanks to MedMax, my blood donation helped a patient in critical condition. It feels incredible to make a difference!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Samrath</span>
+                            <span class="author-name">Rahul Sharma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">The bed donated through MedMax gave my mother comfort during her recovery. Thank you for your support!</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Raghav Sharma</span>
+                            <span class="author-name">Ravi Verma</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <p class="testimonial-text">MedMax’s blood donation drive saved my father’s life. I’m forever grateful for this initiative.</p>
                         <div class="testimonial-author">
                             <div class="author-image"></div>
-                            <span class="author-name">Ram Krishna sharma</span>
+                            <span class="author-name">Riya Sharma</span>
                         </div>
                     </div>
                 </div>
@@ -1426,7 +1423,7 @@
                         <div class="location-icon">🏥</div>
                         <h3 class="location-name">Beamount Hospital</h3>
                         <p class="location-description">
-                            Book a bed or join our blood donation drives. Contact us at 122-123-444 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
+                            Book a bed or join our blood donation drives. Contact us at 248-278-8484 or <a href="mailto:info@medmax.org">info@medmax.org</a>.
                         </p>
                     </div>
                 </div>
@@ -1463,7 +1460,7 @@
             </div>
             <div class="footer-section footer-contact">
                 <h3>Contact</h3>
-                <p><i class="fas fa-phone"></i>123-123-444</p>
+                <p><i class="fas fa-phone"></i> 248-278-8484</p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:info@medmax.org">info@medmax.org</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Detroit, MI</p>
             </div>
@@ -1477,7 +1474,7 @@
             <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
             <h3>Donor Registration</h3>
             <form id="donationForm" onsubmit="submitDonationForm(event)">
-                <label for="name"> Name</label>
+                <label for="name">Full Name</label>
                 <input type="text" id="name" required>
                 
                 <label for="email">Email</label>
@@ -1559,7 +1556,9 @@
             }
         }
 
-function submitDonationForm(e) {
+        // Form Submission
+      
+        function submitDonationForm(e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -1700,7 +1699,6 @@ function showSuccess(message) {
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 5000);
 }
-
     </script>
 </body>
 </html>

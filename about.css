@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+.hero {
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+
+.heading h1 {
+    color: #0e4d7a; /* A more medical/healthcare-oriented color */
+    font-size: 55px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 65px auto;
+}
+
+.hero-content {
+    flex: 1;
+    width: 600px;
+    margin: 0 25px;
+    animation: fadeInUp 2s ease;
+}
+
+.hero-content h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.hero-content p {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.hero-image {
+    flex: 1;
+    width: 600px;
+    margin: auto;
+    animation: fadeInRight 2s ease;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+/* Header Styles */
+
+header {
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text span:first-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0e4d7a;
+    transition: color 0.3s ease;
+}
+
+/* Fix for duplicate header structure in HTML */
+nav {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+nav ul li:hover {
+    transform: translateY(-2px);
+}
+nav ul li a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #62c5e8;
+}
+
+nav ul li.active::after {
+    content: '•';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #62c5e8;
+    animation: pulse 1.5s infinite;
+}
+
+/* Maintain rest of the header styling */
+
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.2); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+.contact-donate {
+    display: flex;
+    align-items: center;
+}
+
+.phone {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.phone:hover {
+    opacity: 0.7;
+}
+
+.donate-btn {
+    background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: -100%;
+    transition: all 0.4s ease;
+}
+
+.donate-btn:hover::after {
+    width: 200%;
+    left: 0;
+}
+
+.donate-btn:hover {
+    background: linear-gradient(45deg, #4ba9cc, #3887a3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+}
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .heading h1 {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+
+    .hero {
+        margin: 0;
+    }
+
+    .container {
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        padding: 0 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin: 35px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+}
+}
+footer {
+    padding: 60px 0 20px;
+    background:#0e4d7a;
+    color: #fff;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #62c5e8;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    color: #62c5e8;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+.custom-popup {
+position: fixed;
+top: 20px;
+right: 20px;
+padding: 15px 20px;
+border-radius: 5px;
+color: white;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+animation: slideIn 0.5s, fadeOut 0.5s 4.5s;
+}
+
+.custom-popup.success {
+background-color: #4CAF50;
+}
+
+.custom-popup.error {
+background-color: #f44336;
+}
+
+.popup-content {
+display: flex;
+align-items: center;
+}
+
+.popup-icon {
+font-size: 24px;
+margin-right: 10px;
+}
+
+@keyframes slideIn {
+from { transform: translateX(100%); }
+to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+from { opacity: 1; }
+to { opacity: 0; }
+}
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-title .of,
+    .hero-title .detroit {
+        font-size: 2.5rem;
+    }
+
+    .donation-options,
+    .locations-list,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 0 15px 10px 0;
+    }
+
+    .contact-donate {
+        margin-top: 20px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .hero-image {
+        margin: 30px 0 0 0;
+        max-width: 100%;
+    }
+
+    .donation-options,
+    .locations-list,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        flex-direction: column;
+    }
+
+    .services-grid.reverse {
+        flex-direction: column;
+    }
+
+    .service-image {
+        max-width: 100%;
+    }
+
+    .locations-content {
+        flex-direction: column;
+    }
+
+    .testimonials-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}

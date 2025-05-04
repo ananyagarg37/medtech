@@ -1,54 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Health Insurance Policies | Your MedTech Company</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Insurance Policies | MedMax</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #2c3e50;
-      color: #ecf0f1;
-    }
-    header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fcff, #e6f3fa);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text span:last-child {
+            font-weight: bold;
+            color: #0e4d7a;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #62c5e8;
+        }
+
+        nav ul li.active::after {
+            content: '•';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #62c5e8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .contact-donate {
+            display: flex;
+            align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone:hover {
+            opacity: 0.7;
+        }
+
+        .donate-btn {
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.4s ease;
+        }
+
+        .donate-btn:hover::after {
+            width: 200%;
+            left: 0;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+        }
+
     main {
       padding: 30px;
       max-width: 900px;
       margin: auto;
     }
+
     section {
-      background-color: #34495e;
+      background-color: #70b3d0;
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+
     h2 {
-      color: #1abc9c;
+      color: #3f8197;
     }
+
     footer {
-      background-color: #1a252f;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
+      background-color: #15678a;
       color: #bdc3c7;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-section h3 {
+      color: #edf3f2;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .li{
+      color: #131415;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #bdc3c7;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #cdd8d6;
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+    }
+
+    .footer-contact a {
+      color: #bdc3c7;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+      color: #dde3e2;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #dae2e2;
+      border-top: 1px solid #0e4e6a;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Health Insurance Policies</h1>
-    <p>Comprehensive coverage tailored to your health needs</p>
-  </header>
-  <main>
 
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+        <div class="logo">
+            
+            <div class="logo-text">
+                <span></span>
+                <span>MEDMAX</span>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="donation.html"> Donation</a></li>
+                <li><a href="policies.html">Policies</a></li>
+                <li><a href="hospitals.html">Hospitals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-donate">
+            <div class="phone">
+                <i>📞</i>
+                <span>Call 248-278-8484</span>
+            </div>
+            <a href="#services" class="donate-btn">Donate</a>
+        </div>
+    </div>
+</header>
+
+
+  <!-- MAIN CONTENT -->
+  <main>
     <section>
       <h2>🔹 Individual Health Insurance Plan</h2>
       <p><strong>Ideal for:</strong> Individuals seeking standalone health coverage</p>
@@ -92,11 +341,43 @@
         <li>Renewable for life</li>
       </ul>
     </section>
-
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Your MedTech Company. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About MedMax</h3>
+        <ul class="footer-links">
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">History</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Blood Donation</a></li>
+          <li><a href="#">Bed Donation</a></li>
+          <li><a href="#">Community Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hospitals</h3>
+        <ul class="footer-links">
+          <li><a href="#">ABC Hospital</a></li>
+          <li><a href="#">Corewell Health</a></li>
+          <li><a href="#">Beaumont Hospital</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-contact">
+        <h3>Contact</h3>
+        <p>📞 123-123-444</p>
+        <p>✉️ <a href="mailto:info@medmax.org">info@medmax.org</a></p>
+        <p>📍 Detroit, MI</p>
+      </div>
+    </div>
+    <div class="copyright">© 2025 MedMax. All rights reserved.</div>
   </footer>
 </body>
 </html>

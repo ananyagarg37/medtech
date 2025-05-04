@@ -5,56 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MedMax - Patient Input</title>
   <style>
-    :root {
-      --mint: #a0f0f5;
-      --mint-dark: #5dd3da;
-      --mint-light: #e3fbfd;
-      --text: #1a1a1a;
-      --background: #f2fcfd;
-    }
+  
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-    }
+    header {
+            padding: 20px 0;
+            background:rgba(255, 255, 255, 0.9);
 
-    .dashboard-container {
-      display: flex;
-      height: 100vh;
-    }
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
 
-    .sidebar {
-      background-color: var(--mint-dark);
-      color: white;
-      width: 240px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
 
-    .sidebar h2 {
-      margin-bottom: 2rem;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
 
-    .sidebar nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.75rem 0;
-      display: block;
-      transition: background 0.3s;
-    }
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
-    .sidebar nav a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-    }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
 
-    .main-content {
-      flex: 1;
-      padding: 2rem;
-    }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 0.8rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text span:last-child {
+            font-weight: bold;
+            color: #0e4d7a;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #15678a;
+        }
+
+        nav ul li.active::after {
+            content: '•';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #62c5e8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .contact-donate {
+            display: flex;
+            align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone:hover {
+            opacity: 0.7;
+        }
+
+        .donate-btn {
+            background: linear-gradient(45deg, #62c5e8, #4ba9cc);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: all 0.4s ease;
+        }
+
+        .donate-btn:hover::after {
+            width: 200%;
+            left: 0;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(45deg, #4ba9cc, #3887a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(98, 197, 232, 0.4);
+        }
+        :root {
+  --mint: #a0f0f5;
+  --mint-dark: #5dd3da;
+  --mint-light: #e3fbfd;
+  --text: #1a1a1a;
+  --background: #e6f7ff; /* Replaced with light blue */
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background); /* Now light blue */
+  color: var(--text);
+}
+
+.dashboard-container {
+  display: flex;
+  height: 120vh;
+}
+
+.sidebar {
+  background-color: var(--background); /* Now light blue */
+  color: black; /* Text is visible on light blue */
+  width: 240px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin-bottom: 2rem;
+}
+
+.sidebar nav a {
+  color: black; /* Maintains readability */
+  text-decoration: none;
+  padding: 0.75rem 0;
+  display: block;
+  transition: background 0.3s;
+}
+
+.sidebar nav a:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Gentle hover effect */
+  border-radius: 6px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+
+
 
     header {
       display: flex;
@@ -131,9 +277,229 @@
     #box>div{
       width: 500px;
     }
+    footer {
+            padding: 60px 0 20px;
+            background: #15678a;
+            color: #fff;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #fff;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #62c5e8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #62c5e8;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        .custom-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s;
+}
+
+.custom-popup.success {
+    background-color: #4CAF50;
+}
+
+.custom-popup.error {
+    background-color: #f44336;
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+}
+
+.popup-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-title .of,
+            .hero-title .detroit {
+                font-size: 2.5rem;
+            }
+
+            .donation-options,
+            .locations-list,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 0 15px 10px 0;
+            }
+
+            .contact-donate {
+                margin-top: 20px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                margin: 30px 0 0 0;
+                max-width: 100%;
+            }
+
+            .donation-options,
+            .locations-list,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                flex-direction: column;
+            }
+
+            .services-grid.reverse {
+                flex-direction: column;
+            }
+
+            .service-image {
+                max-width: 100%;
+            }
+
+            .locations-content {
+                flex-direction: column;
+            }
+
+            .testimonials-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonial-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .modal-content {
+                width: 90%;
+            }
+        }
   </style>
 </head>
 <body>
+  <header>
+    <div class="container header-container">
+        <div class="logo">
+            <div class="logo-text">
+                <span>MEDMAX</span>
+   
+        
+          </div>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./donation.html">Donation</a></li>
+                <li><a href="./policies.html">Policies</a></li>
+                <li><a href="./hospitals.html">Hospitals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-donate">
+            <div class="phone">
+                <i>📞</i>
+                <span>Call 248-278-8484</span>
+            </div>
+            <a href="#services" class="donate-btn">Donate</a>
+        </div>
+    </div>
+</header>
   <div class="dashboard-container">
     <aside class="sidebar">
       <h2>MedMax</h2>
@@ -146,10 +512,9 @@
     </aside>
 
     <main class="main-content" >
-      <header>
+      
         <h1>Add Patient Info</h1>
-        <div class="user-info">Welcome, Admin</div>
-      </header>
+      
       <div id="box">
         <div >
       <form class="user-form" id="patientForm">
@@ -240,5 +605,40 @@
       });
     });
   </script>
+  <footer>
+    <div class="container footer-container">
+        <div class="footer-section">
+            <h3>About MedMax</h3>
+            <ul class="footer-links">
+                <li><a href="#">Our Mission</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">History</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Services</h3>
+            <ul class="footer-links">
+                <li><a href="#">Blood Donation</a></li>
+                <li><a href="#">Bed Donation</a></li>
+                <li><a href="#">Community Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Hospitals</h3>
+            <ul class="footer-links">
+                <li><a href="#">ABC hospital</a></li>
+                <li><a href="#">Corewell Health</a></li>
+                <li><a href="#">Beamount Hospital</a></li>
+            </ul>
+        </div>
+        <div class="footer-section footer-contact">
+            <h3>Contact</h3>
+            <p><i class="fas fa-phone"></i>123-123-444</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info@medmax.org">info@medmax.org</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Detroit, MI</p>
+        </div>
+    </div>
+    <div class="copyright">© 2025 MedMax. All rights reserved.</div>
+</footer>
 </body>
 </html>
