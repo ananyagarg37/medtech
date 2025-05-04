@@ -5,6 +5,10 @@ MedTech is a community-focused healthcare solution aimed at addressing the essen
 1)Availability of hospital beds.
 
 
+respnsibilities :
+
+
+
 2)Doctor availability schedules.
 
 
