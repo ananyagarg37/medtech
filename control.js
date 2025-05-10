@@ -28,3 +28,5 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
           'Content-Type': 'application/json',
               },
         body: JSON.stringify({ name, phone, email }),
+          });
+  
