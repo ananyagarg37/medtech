@@ -20,3 +20,5 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
         alert('Please enter a valid email address.');
       return;
     }
+       try {
+      // Send data to backend
