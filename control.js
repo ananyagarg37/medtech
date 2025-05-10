@@ -31,3 +31,5 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
           });
         const data = await response.json();
          if (response.ok) {
+             alert('Request submitted successfully!');
+        document.getElementById('waitingListForm').reset();
