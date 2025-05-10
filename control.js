@@ -9,3 +9,5 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
           alert('Please enter a valid name (at least 2 characters).');
       return;
     }
+     const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    if (!phoneRegex.test(phone)) {
