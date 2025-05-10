@@ -33,3 +33,6 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
          if (response.ok) {
              alert('Request submitted successfully!');
         document.getElementById('waitingListForm').reset();
+             } else {
+        alert(data.message || 'Error submitting request.');
+      }
