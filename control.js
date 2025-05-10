@@ -36,3 +36,8 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
              } else {
         alert(data.message || 'Error submitting request.');
       }
+  } catch (error) {
+      console.error('Submission error:', error);
+      alert('Server error. Please try again later.');
+    }
+  });
