@@ -14,3 +14,6 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
         alert('Please enter a valid phone number.');
       return;
     }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
