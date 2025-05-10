@@ -6,7 +6,7 @@
 }
 
 /* Global Variables */
-/* :root {
+:root {
     --primary-color: #15678a;
     --secondary-color: #000000;
     --light-color: #fbfbfa;
@@ -17,7 +17,7 @@
     --light-gray: #c5cdd0;
     --accent-color: #86655e;
     --beige-color: #cec0af;
-} */
+}
 
 /* Global Styles */
 body {
