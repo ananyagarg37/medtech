@@ -608,7 +608,7 @@ to { opacity: 0; }
     .locations-content {
         flex-direction: column;
     }
-
+/* 
     .testimonials-grid {
         flex-direction: column;
         align-items: center;
@@ -623,7 +623,7 @@ to { opacity: 0; }
         width: 90%;
     }
 }
-
+ */
 
 
 
