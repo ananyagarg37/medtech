@@ -11,3 +11,6 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
     }
      const phoneRegex = /^\+?[\d\s-]{10,}$/;
     if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid phone number.');
+      return;
+    }
