@@ -29,4 +29,5 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
               },
         body: JSON.stringify({ name, phone, email }),
           });
-  
+        const data = await response.json();
+         if (response.ok) {
