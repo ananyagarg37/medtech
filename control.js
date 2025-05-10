@@ -6,3 +6,6 @@ document.getElementById('waitingListForm').addEventListener('submit', async (e) 
     const email = document.getElementById('email').value.trim();
      // Client-side validation
     if (!name || name.length < 2) {
+          alert('Please enter a valid name (at least 2 characters).');
+      return;
+    }
